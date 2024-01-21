@@ -41,7 +41,7 @@ const updateToDo = (toDoId, text, setToDo, setText, setIsUpdating) => {
 
 const deleteToDo = (toDoId, setToDo) => {
   axios
-    .delete(`${baseUrl}/delete`, { data: { _id: toDoId } })
+    .delete(`${baseUrl}/delete/${toDoId}`)
     .then((data) => {
       console.log(data);
       getAllToDo(setToDo);
