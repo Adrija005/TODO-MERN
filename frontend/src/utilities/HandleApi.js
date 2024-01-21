@@ -16,7 +16,7 @@ const getAllToDo = (setToDo) => {
 
 const addToDo = (text, setText, setToDo) => {
   axios
-    .post(`${baseUrl}/save`, { text })
+    .post(`${baseUrl}/saveToDo`, { text })
     .then((data) => {
       console.log(data);
       setText("")
@@ -29,7 +29,7 @@ const addToDo = (text, setText, setToDo) => {
 
 const updateToDo = (toDoId, text, setToDo, setText, setIsUpdating) => {
   axios
-    .put(`${baseUrl}/update`, { _id: toDoId, text })
+    .put(`${baseUrl}/updateToDo`, { _id: toDoId, text })
     .then((data) => {
       setText("")
       setIsUpdating(false)
