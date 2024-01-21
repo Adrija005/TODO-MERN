@@ -1,9 +1,10 @@
 import axios from 'axios'
 
-const baseUrl = "https://todo-zel0.onrender.com/"
+const baseUrl = "https://todo-zel0.onrender.com/";
 
 const getAllToDo = (setToDo) => {
-  axios.get(baseUrl)
+  axios
+    .get(baseUrl)
     .then(({ data }) => {
       console.log('data ---> ', data);
       setToDo(data)
@@ -16,7 +17,7 @@ const getAllToDo = (setToDo) => {
 
 const addToDo = (text, setText, setToDo) => {
   axios
-    .post(`${baseUrl}/saveTodo`, { text })
+    .post(`${baseUrl}/save`, { text })
     .then((data) => {
       console.log(data);
       setText("")
@@ -29,7 +30,7 @@ const addToDo = (text, setText, setToDo) => {
 
 const updateToDo = (toDoId, text, setToDo, setText, setIsUpdating) => {
   axios
-    .put(`${baseUrl}/updateTodo`, { _id: toDoId, text })
+    .put(`${baseUrl}/update`, { _id: toDoId, text })
     .then((data) => {
       setText("")
       setIsUpdating(false)
@@ -41,7 +42,7 @@ const updateToDo = (toDoId, text, setToDo, setText, setIsUpdating) => {
 
 const deleteToDo = (toDoId, setToDo) => {
   axios
-    .delete(`${baseUrl}/delete/${toDoId}`)
+    .delete(`${baseUrl}/delete`, { data: { _id: toDoId } })
     .then((data) => {
       console.log(data);
       getAllToDo(setToDo);
